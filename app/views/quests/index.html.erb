@@ -5,10 +5,84 @@
     <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-md inline-block" id="notice"><%= notice %></p>
   <% end %>
 
-  <div class="flex justify-between items-center">
-    <h1 class="font-bold text-4xl">Quests</h1>
-    <%= link_to "New quest", new_quest_path, class: "rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white block font-medium" %>
+  <h1 class="text-4xl text-center text-[#D35400] tracking-widest mt-5 mb-1">Umpika Mettatam</h1>
+  <h1 class="text-sm text-center text-[#D35400] opacity-50 tracking-widest mt-1 mb-5">アンピカ　メッタタム</h1>
+  
+  <div class="flex justify-center items-center mb-10">
+    <div class="text-center hover:shadow-lg cursor-pointer">
+      <%= link_to "Brags", brags_path, class: "px-6 py-2 rounded-md font-bold tracking-wide text-lg bg-[#D35400] hover:bg-[#E67E22] text-white block font-medium" %>
+    </div>
   </div>
+
+<div class="bg-[#F6DAC7] max-w justify-center content-center items-center p-4 rounded-md space-y-3 ml-20 mt-5 mr-20">
+  <center><img src="<%= asset_path('8F894D8E-973C-4CF5-94D1-F536C768F96A_1_105_c.jpeg') %>" alt="image" class="max-h-80 items-center"></center>
+  <p class= "text-xs text-center text-[#D35400]">
+    "Hi! I’m an architect who has worked as a interior designer, urban engineer, and researcher.
+    I’m currently on my way to becoming a software developer — but honestly, I just want to explore everything that excites me"
+  </p>
+</div>
+
+<div>
+  <h1 class="flex text-2xl text-life text-[#D35400] font-bold tracking-widest ml-20 mt-8 mb-4">QUESTS:</h1>
+  <div class="flex justify-end text-right mt-4 mr-20">
+    <%= link_to "Add Task", new_quest_path, class: "px-3.5 py-2.5 rounded-md font-bold tracking-wide bg-[#D35400] hover:bg-[#E67E22] text-white block font-medium" %>
+  </div>
+</div>
+
+<div>
+ <ul class="text-lg space-y-3 ml-20 mt-5 mb-5 mr-28">
+        <li class="flex justify-between items-center">
+          <div><input type="checkbox" checked class="mr-4">Monkey type 55 wpm, acc 95%</div>
+          <div class="flex space-x-2">
+            <button>🗑️</button>
+          </div>
+        </li>
+        <li class="flex justify-between items-center">
+          <div><input type="checkbox" class="mr-4">Scrum test 100%</div>
+          <div class="flex space-x-2">
+            <button>🗑️</button>
+          </div>
+        </li>
+        <li class="flex justify-between items-center">
+          <div><input type="checkbox" class="mr-4">Git test 25/25</div>
+          <div class="flex space-x-2">
+            <button>🗑️</button>
+          </div>
+        </li>
+        <li class="flex justify-between items-center">
+          <div><input type="checkbox" class="mr-4">UI design for academy test</div>
+          <div class="flex space-x-2">
+            <button>🗑️</button>
+          </div>
+        </li>
+        <li class="flex justify-between items-center">
+          <div><input type="checkbox" class="mr-4">Read User story mapping</div>
+          <div class="flex space-x-2">
+            <button>🗑️</button>
+          </div>
+        </li>
+        <li class="flex justify-between items-center">
+          <div><input type="checkbox" class="mr-4">Apply to JLPT N2-Dec 2025</div>
+          <div class="flex space-x-2">
+            <button>🗑️</button>
+          </div>
+        </li>
+        <li class="flex justify-between items-center">
+          <div><input type="checkbox" class="mr-4">Extra test, Business/QA/UX</div>
+          <div class="flex space-x-2">
+            <button>🗑️</button>
+          </div>
+        </li>
+        <li class="flex justify-between items-center">
+          <div><input type="checkbox" class="mr-4">UI design for academy test</div>
+          <div class="flex space-x-2">
+            <button>🗑️</button>
+          </div>
+        </li>
+  </ul>
+</div>
+
+
 
   <div id="quests" class="min-w-full divide-y divide-gray-200 space-y-5">
     <% if @quests.any? %>
@@ -17,8 +91,7 @@
           <%= render quest %>
           <div class="w-full sm:w-auto flex flex-col sm:flex-row space-x-2 space-y-2">
             <%= link_to "Show", quest, class: "w-full sm:w-auto text-center rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium" %>
-            <%= link_to "Edit", edit_quest_path(quest), class: "w-full sm:w-auto text-center rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium" %>
-            <%= button_to "Destroy", quest, method: :delete, class: "w-full sm:w-auto rounded-md px-3.5 py-2.5 text-white bg-red-600 hover:bg-red-500 font-medium cursor-pointer", data: { turbo_confirm: "Are you sure?" } %>
+            <%= button_to "Delete", quest, method: :delete, class: "w-full sm:w-auto rounded-md px-3.5 py-2.5 text-white bg-red-600 hover:bg-red-500 font-medium cursor-pointer", data: { turbo_confirm: "Are you sure?" } %>
           </div>
         </div>
       <% end %>
@@ -26,4 +99,69 @@
       <p class="text-center my-10">No quests found.</p>
     <% end %>
   </div>
+  <div class="text-center text-gray-400 py-4">
+    <img src="<%= asset_path('farmHouse_02.png') %>" alt="image" class="max-h-96">
+  </div>
 </div>
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Umpika Mettatam Profile</title>
+  <link href="https://fonts.googleapis.com/css2?family=Khmer&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: 'Khmer', sans-serif;
+      font-size: 14px;
+    }
+    .btn-orange {
+      background-color: #D35400;
+      color: white;
+    }
+  </style>
+</head>
+<body class="bg-gray-200 p-4">
+  <div class="max-w-md mx-auto bg-white rounded-2xl shadow-lg overflow-hidden">
+    <div class="p-6 text-center">
+      <h1 class="text-2xl font-semibold text-orange-700 tracking-wide">Umpika Mettatam</h1>
+      <p class="text-sm text-orange-600 mt-1">アンピカ　メッタタム</p>
+      <button class="btn-orange px-6 py-2 rounded-md font-semibold mt-4">Brags</button>
+    </div>
+
+    <div class="bg-orange-50 p-4">
+      <img src="~/app/assets/images/Me_01.png" alt="Profile" class="w-full rounded-md mb-2">
+      <p class="text-orange-800 text-sm">
+        "Hi! I’m an architect who has worked as a interior designer, urban engineer, and researcher.
+        I’m currently on my way to becoming a software developer — but honestly, I just want to explore everything that excites me"
+      </p>
+    </div>
+
+    <div class="p-4">
+      <h2 class="text-lg font-bold text-orange-700 mb-3">QUESTS:</h2>
+      <ul class="space-y-3">
+
+
+  
+
+
+      <div class="text-right mt-4">
+        <button class="btn-orange px-4 py-1 rounded-md text-sm font-semibold">Add</button>
+      </div>
+    </div>
+
+    <div class="text-center text-gray-400 py-4">
+      <p class="text-4xl opacity-10 font-bold">farmHouse</p>
+    </div>
+  </div>
+</body>
+</html>
+

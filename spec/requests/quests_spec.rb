@@ -18,11 +18,17 @@ RSpec.describe "/quests", type: :request do
   # Quest. As you add validations to Quest, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+   {
+    name: "Test Quest",
+    status: false
+   }
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    {
+     name: nil,
+     status: nil
+    }
   }
 
   describe "GET /index" do
@@ -48,13 +54,6 @@ RSpec.describe "/quests", type: :request do
     end
   end
 
-  describe "GET /edit" do
-    it "renders a successful response" do
-      quest = Quest.create! valid_attributes
-      get edit_quest_url(quest)
-      expect(response).to be_successful
-    end
-  end
 
   describe "POST /create" do
     context "with valid parameters" do
@@ -87,14 +86,17 @@ RSpec.describe "/quests", type: :request do
   describe "PATCH /update" do
     context "with valid parameters" do
       let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
+        {
+          name: "Updated Quest",
+          status: true
+        }
       }
 
       it "updates the requested quest" do
         quest = Quest.create! valid_attributes
         patch quest_url(quest), params: { quest: new_attributes }
         quest.reload
-        skip("Add assertions for updated state")
+        expect(quest.name).to eq("Updated Quest")
       end
 
       it "redirects to the quest" do
