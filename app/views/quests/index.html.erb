@@ -1,43 +1,49 @@
 <% content_for :title, "Quests" %>
 
-<div class="w-full">
+<div class="w-full flex flex-col justify-center items-center">
   <% if notice.present? %>
     <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-md inline-block" id="notice"><%= notice %></p>
   <% end %>
 
-  <h1 class="text-4xl text-center text-[#D35400] tracking-widest mt-5 mb-1">Umpika Mettatam</h1>
-  <h1 class="text-sm text-center text-[#D35400] opacity-50 tracking-widest mt-1 mb-5">アンピカ　メッタタム</h1>
+  <h1 class="font-sans text-6xl text-center text-[#D35400] tracking-widest mt-5 mb-1">Umpika Mettatam</h1>
+  <h1 class="text-lg text-center text-[#D35400] opacity-50 tracking-widest mt-1 mb-5">アンピカ　メッタタム</h1>
   
-  <div class="flex justify-center items-center mb-10">
+  <div class="flex justify-center items-center pb-16">
     <div class="text-center hover:shadow-lg cursor-pointer">
-      <%= link_to "Brags", brags_path, class: "px-6 py-2 rounded-md font-bold tracking-wide text-lg bg-[#D35400] hover:bg-[#E67E22] text-white block font-medium" %>
+      <%= link_to "Brags", brags_path, class: "px-24 py-4 rounded-md font-bold tracking-wide text-2xl bg-[#D35400] hover:bg-[#E67E22] text-white block font-medium" %>
     </div>
   </div>
 
-<div class="bg-[#F6DAC7] max-w justify-center content-center items-center p-4 rounded-md space-y-3 ml-20 mt-5 mr-20">
-  <center><img src="<%= asset_path('8F894D8E-973C-4CF5-94D1-F536C768F96A_1_105_c.jpeg') %>" alt="image" class="max-h-80 items-center"></center>
-  <p class= "text-xs text-center text-[#D35400]">
+<%# <div class="bg-[#F6DAC7] max-w justify-center content-center items-center p-4 rounded-md space-y-3 ml-20 mt-5 mr-20"> %>
+  <%# <center><img src="<%= asset_path('8F894D8E-973C-4CF5-94D1-F536C768F96A_1_105_c.jpeg')" alt="image" class="max-h-120 items-center mt-5 "></center> %> 
+  <%# <p class= "text-sm text-center text-[#D35400] w-4/5"> %>
+    <%# "Hi! I’m an architect who has worked as a interior designer, urban engineer, and researcher. %>
+    <%# I’m currently on my way to becoming a software developer — but honestly, I just want to explore everything that excites me" %>
+  <%# </p> %>
+<%# </div> %>
+
+<div class="bg-[#F6DAC7] rounded-xl flex flex-col items-center sm:w-3/5 sm:min-3/5">
+  <img src="<%= asset_path('8F894D8E-973C-4CF5-94D1-F536C768F96A_1_105_c.jpeg') %>" alt="image" class="w-[calc(100%-32px)] pt-4 sm:w-fit max-auto sm:px-8 sm:pt-8">
+  <p class= "text-xs text-[#D35400] w-[calc(100%-32px)] pt-4 pb-4 sm:w-auto sm:text-sm sm:px-8">
     "Hi! I’m an architect who has worked as a interior designer, urban engineer, and researcher.
     I’m currently on my way to becoming a software developer — but honestly, I just want to explore everything that excites me"
   </p>
 </div>
 
-<div>
-  <h1 class="flex text-2xl text-life text-[#D35400] font-bold tracking-widest ml-20 mt-8 mb-4">QUESTS:</h1>
-  <div class="flex justify-end text-right mt-4 mr-20">
-    <%= link_to "Add Task", new_quest_path, class: "px-3.5 py-2.5 rounded-md font-bold tracking-wide bg-[#D35400] hover:bg-[#E67E22] text-white block font-medium" %>
-  </div>
+<div class="flex pt-16 pb-8 px-4 w-full content-center items-center justify-between sm:justify-around">
+  <h1 class="font-mono text-3xl text-life text-[#D35400] font-bold tracking-widest">QUESTS:</h1>
+  <%= link_to "Add Task", new_quest_path, class: "px-3.5 py-2.5 rounded-md font-bold tracking-wide bg-[#D35400] hover:bg-[#E67E22] text-white block font-medium" %>
 </div>
 
 <div>
- <ul class="text-lg space-y-3 ml-20 mt-5 mb-5 mr-28">
-        <li class="flex justify-between items-center">
+ <ul class="text-lg w-full flex flex-col gap-4">
+        <%# <li class="flex justify-between items-center">
           <div><input type="checkbox" checked class="mr-4">Monkey type 55 wpm, acc 95%</div>
           <div class="flex space-x-2">
             <button>🗑️</button>
           </div>
-        </li>
-        <li class="flex justify-between items-center">
+        </li> %>
+        <%# <li class="flex justify-between items-center">
           <div><input type="checkbox" class="mr-4">Scrum test 100%</div>
           <div class="flex space-x-2">
             <button>🗑️</button>
@@ -78,20 +84,22 @@
           <div class="flex space-x-2">
             <button>🗑️</button>
           </div>
-        </li>
-  </ul>
+        </li> %>
+  </ul> 
 </div>
 
-
-
-  <div id="quests" class="min-w-full divide-y divide-gray-200 space-y-5">
+<div class=w-full>
+  <div id="quests" class="divide-y divide-gray-200 space-y-5">
     <% if @quests.any? %>
       <% @quests.each do |quest| %>
-        <div class="flex flex-col sm:flex-row justify-between items-center pb-5 sm:pb-0">
-          <%= render quest %>
-          <div class="w-full sm:w-auto flex flex-col sm:flex-row space-x-2 space-y-2">
-            <%= link_to "Show", quest, class: "w-full sm:w-auto text-center rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium" %>
-            <%= button_to "Delete", quest, method: :delete, class: "w-full sm:w-auto rounded-md px-3.5 py-2.5 text-white bg-red-600 hover:bg-red-500 font-medium cursor-pointer", data: { turbo_confirm: "Are you sure?" } %>
+        <div class="flex flex-row justify-between sm:items-center pb-5 sm:pb-0 gap-4 sm:gap-0 items-center content-center">
+            <%= render quest %>
+          <div class="px-4 sm:w-auto flex flex-col sm:flex-row gap-2">
+            <%= button_to quest, method: :delete, class: "sm:w-auto text-[#D35400] font-medium cursor-pointer", data: { turbo_confirm: "Are you sure?" } do %>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 inline-block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+              </svg>
+            <% end %>
           </div>
         </div>
       <% end %>
@@ -99,69 +107,4 @@
       <p class="text-center my-10">No quests found.</p>
     <% end %>
   </div>
-  <div class="text-center text-gray-400 py-4">
-    <img src="<%= asset_path('farmHouse_02.png') %>" alt="image" class="max-h-96">
-  </div>
 </div>
-
-
-
-
-
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Umpika Mettatam Profile</title>
-  <link href="https://fonts.googleapis.com/css2?family=Khmer&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    body {
-      font-family: 'Khmer', sans-serif;
-      font-size: 14px;
-    }
-    .btn-orange {
-      background-color: #D35400;
-      color: white;
-    }
-  </style>
-</head>
-<body class="bg-gray-200 p-4">
-  <div class="max-w-md mx-auto bg-white rounded-2xl shadow-lg overflow-hidden">
-    <div class="p-6 text-center">
-      <h1 class="text-2xl font-semibold text-orange-700 tracking-wide">Umpika Mettatam</h1>
-      <p class="text-sm text-orange-600 mt-1">アンピカ　メッタタム</p>
-      <button class="btn-orange px-6 py-2 rounded-md font-semibold mt-4">Brags</button>
-    </div>
-
-    <div class="bg-orange-50 p-4">
-      <img src="~/app/assets/images/Me_01.png" alt="Profile" class="w-full rounded-md mb-2">
-      <p class="text-orange-800 text-sm">
-        "Hi! I’m an architect who has worked as a interior designer, urban engineer, and researcher.
-        I’m currently on my way to becoming a software developer — but honestly, I just want to explore everything that excites me"
-      </p>
-    </div>
-
-    <div class="p-4">
-      <h2 class="text-lg font-bold text-orange-700 mb-3">QUESTS:</h2>
-      <ul class="space-y-3">
-
-
-  
-
-
-      <div class="text-right mt-4">
-        <button class="btn-orange px-4 py-1 rounded-md text-sm font-semibold">Add</button>
-      </div>
-    </div>
-
-    <div class="text-center text-gray-400 py-4">
-      <p class="text-4xl opacity-10 font-bold">farmHouse</p>
-    </div>
-  </div>
-</body>
-</html>
-
