@@ -14,14 +14,6 @@
     </div>
   </div>
 
-<%# <div class="bg-[#F6DAC7] max-w justify-center content-center items-center p-4 rounded-md space-y-3 ml-20 mt-5 mr-20"> %>
-  <%# <center><img src="<%= asset_path('8F894D8E-973C-4CF5-94D1-F536C768F96A_1_105_c.jpeg')" alt="image" class="max-h-120 items-center mt-5 "></center> %> 
-  <%# <p class= "text-sm text-center text-[#D35400] w-4/5"> %>
-    <%# "Hi! I’m an architect who has worked as a interior designer, urban engineer, and researcher. %>
-    <%# I’m currently on my way to becoming a software developer — but honestly, I just want to explore everything that excites me" %>
-  <%# </p> %>
-<%# </div> %>
-
 <div class="bg-[#F6DAC7] rounded-xl flex flex-col items-center sm:w-3/5 sm:min-3/5">
   <img src="<%= asset_path('8F894D8E-973C-4CF5-94D1-F536C768F96A_1_105_c.jpeg') %>" alt="image" class="w-[calc(100%-32px)] pt-4 sm:w-fit max-auto sm:px-8 sm:pt-8">
   <p class= "text-xs text-[#D35400] w-[calc(100%-32px)] pt-4 pb-4 sm:w-auto sm:text-sm sm:px-8">
@@ -35,73 +27,20 @@
   <%= link_to "Add Task", new_quest_path, class: "px-3.5 py-2.5 rounded-md font-bold tracking-wide bg-[#D35400] hover:bg-[#E67E22] text-white block font-medium" %>
 </div>
 
-<div>
- <ul class="text-lg w-full flex flex-col gap-4">
-        <%# <li class="flex justify-between items-center">
-          <div><input type="checkbox" checked class="mr-4">Monkey type 55 wpm, acc 95%</div>
-          <div class="flex space-x-2">
-            <button>🗑️</button>
-          </div>
-        </li> %>
-        <%# <li class="flex justify-between items-center">
-          <div><input type="checkbox" class="mr-4">Scrum test 100%</div>
-          <div class="flex space-x-2">
-            <button>🗑️</button>
-          </div>
-        </li>
-        <li class="flex justify-between items-center">
-          <div><input type="checkbox" class="mr-4">Git test 25/25</div>
-          <div class="flex space-x-2">
-            <button>🗑️</button>
-          </div>
-        </li>
-        <li class="flex justify-between items-center">
-          <div><input type="checkbox" class="mr-4">UI design for academy test</div>
-          <div class="flex space-x-2">
-            <button>🗑️</button>
-          </div>
-        </li>
-        <li class="flex justify-between items-center">
-          <div><input type="checkbox" class="mr-4">Read User story mapping</div>
-          <div class="flex space-x-2">
-            <button>🗑️</button>
-          </div>
-        </li>
-        <li class="flex justify-between items-center">
-          <div><input type="checkbox" class="mr-4">Apply to JLPT N2-Dec 2025</div>
-          <div class="flex space-x-2">
-            <button>🗑️</button>
-          </div>
-        </li>
-        <li class="flex justify-between items-center">
-          <div><input type="checkbox" class="mr-4">Extra test, Business/QA/UX</div>
-          <div class="flex space-x-2">
-            <button>🗑️</button>
-          </div>
-        </li>
-        <li class="flex justify-between items-center">
-          <div><input type="checkbox" class="mr-4">UI design for academy test</div>
-          <div class="flex space-x-2">
-            <button>🗑️</button>
-          </div>
-        </li> %>
-  </ul> 
-</div>
-
 <div class=w-full>
   <div id="quests" class="divide-y divide-gray-200 space-y-5">
     <% if @quests.any? %>
-      <% @quests.each do |quest| %>
-        <div class="flex flex-row justify-between sm:items-center pb-5 sm:pb-0 gap-4 sm:gap-0 items-center content-center">
-            <%= render quest %>
-          <div class="px-4 sm:w-auto flex flex-col sm:flex-row gap-2">
-            <%= button_to quest, method: :delete, class: "sm:w-auto text-[#D35400] font-medium cursor-pointer", data: { turbo_confirm: "Are you sure?" } do %>
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 inline-block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-              </svg>
-            <% end %>
-          </div>
+      <% @quests.order(created_at: :desc).each do |quest| %>
+      <div class="flex flex-row justify-between sm:items-center pb-5 sm:pb-0 gap-4 sm:gap-0 items-center content-center">
+        <%= render quest %>
+        <div class="px-4 sm:w-auto flex flex-col sm:flex-row gap-2">
+        <%= button_to quest, method: :delete, class: "sm:w-auto text-[#D35400] font-medium cursor-pointer", data: { turbo_confirm: "Are you sure?" } do %>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 inline-block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+          </svg>
+        <% end %>
         </div>
+      </div>
       <% end %>
     <% else %>
       <p class="text-center my-10">No quests found.</p>
