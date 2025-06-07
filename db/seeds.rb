@@ -3,28 +3,33 @@ Quest.destroy_all
 
 puts "Creating quests..."
 
-quests = [
-  { name: "First Day at TIPCO! Setup Macbooks and everything up!", status: true, created_at: Time.parse("2024-01-06") },
-  { name: "1st Finova's UX Field Research", status: true, created_at: Time.parse("2024-01-10") },
-  { name: "Friendslog Migration", status: false, created_at: Time.parse("2024-01-14") },
-  { name: "2nd Finova's UX Field Research", status: true, created_at: Time.parse("2024-01-17") },
-  { name: "3rd Finova's UX Field Research", status: true, created_at: Time.parse("2024-01-24") },
-  { name: "Create Tipco's card template for printing", status: true, created_at: Time.parse("2024-02-3") },
-  { name: "On Board people fron Sukhothai Thammathirat Open University that recently joinned", status: true, created_at: Time.parse("2024-02-18") },
-  { name: "NVC Class", status: true, created_at: Time.parse("2024-03-03") },
-  { name: "Scrum Class", status: true, created_at: Time.parse("2024-03-04") },
-  { name: "Ruby Class", status: true, created_at: Time.parse("2024-03-10") },
-  { name: "Ruby On Rails Class", status: true, created_at: Time.parse("2024-03-11") },
-  { name: "GIT Class", status: true, created_at: Time.parse("2024-03-17") },
-  { name: "Agile Testing Class", status: true, created_at: Time.parse("2024-03-18") },
-  { name: "Playwright Testing", status: true, created_at: Time.parse("2024-03-21") },
-  { name: "Container Fundamental", status: true, created_at: Time.parse("2024-03-24") },
-  { name: "Docker Class", status: true, created_at: Time.parse("2024-03-25") },
-  { name: "CI on Gitlabs", status: true, created_at: Time.parse("2024-03-26") },
-  { name: "Jenkins Class", status: true, created_at: Time.parse("2024-03-27") },
-  { name: "Figma Class", status: true, created_at: Time.parse("2024-03-31") },
-  { name: "BMA Project", status: false, created_at: Time.parse("2024-04-01") }
-]
+quests = if Rails.env.test?
+  [
+    { name: "Test Quest", status: false, created_at: Time.parse("2025-03-01") }
+  ]
+else
+  [
+    { name: "Class-NVC", status: true, created_at: Time.parse("2025-03-01") },
+    { name: "Class-Scrum", status: true, created_at: Time.parse("2025-03-01") },
+    { name: "Class-Ruby On Rails", status: true, created_at: Time.parse("2025-04-01") },
+    { name: "Class-GIT", status: true, created_at: Time.parse("2025-04-01") },
+    { name: "Class-Agile Testing", status: true, created_at: Time.parse("2025-04-01") },
+    { name: "Class-Playwright Testing", status: true, created_at: Time.parse("2025-04-01") },
+    { name: "Class-Container Fundamental", status: true, created_at: Time.parse("2025-04-01") },
+    { name: "Class-Docker", status: true, created_at: Time.parse("2025-04-01") },
+    { name: "Class-CI on Gitlabs", status: true, created_at: Time.parse("2025-04-01") },
+    { name: "Class-Jenkins", status: true, created_at: Time.parse("2025-04-01") },
+    { name: "Class-Figma", status: true, created_at: Time.parse("2025-04-01") },
+    { name: "Class-UX, User story", status: true, created_at: Time.parse("2025-04-01") },
+    { name: "Git test 25/25", status: false, created_at: Time.parse("2025-06-01") },
+    { name: "Scrum test 100%", status: false, created_at: Time.parse("2025-06-01") },
+    { name: "Monkey type 55 wpm, acc 95%", status: false, created_at: Time.parse("2025-06-01") },
+    { name: "UI design for academy test", status: false, created_at: Time.parse("2025-06-01") },
+    { name: "Extra test, Bussiness/QA/UX", status: false, created_at: Time.parse("2025-06-02") },
+    { name: "Read User story mapping book", status: false, created_at: Time.parse("2025-06-02") },
+    { name: "BMA Project", status: false, created_at: Time.parse("2025-06-06") }
+  ]
+end
 
 quests.each do |quest_data|
   quest = Quest.create!(quest_data)
