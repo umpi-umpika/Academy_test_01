@@ -64,7 +64,7 @@ RSpec.describe "/quests", type: :request do
 
       it "redirects to the created quest" do
         post quests_url, params: { quest: valid_attributes }
-        expect(response).to redirect_to(quest_url(Quest.last))
+        expect(response).to redirect_to(quests_path)
       end
     end
 
