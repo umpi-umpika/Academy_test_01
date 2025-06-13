@@ -15,6 +15,10 @@ When("I click button {string}") do |link_text|
   click_link link_text
 end
 
+When("I click button call {string}") do |button_name|
+  find("[data-testid='Add Quest Button']").click
+end
+
 Then("I should see the Brage page's details on the brage page") do
   visit "/brag"
 end
@@ -31,9 +35,21 @@ Then("I should see all quests on the quest page") do
   visit "/quests"
 end
 
-Given('I should see the {string} button and text input') do |string|
-  expect(page).to have_content("+ Add Quest")
+Given('I should see the {string} button') do |string|
+  expect(page).to have_button(string)
 end
+
+# And('Type {string} into the fill') do |string|
+#   fill_in quest_input, with: TEST
+# end
+
+And('Type {string} into the fill') do |text|
+  find('input[data-testid="Add Quest"]').fill_in(with: text)
+end
+
+# When('I fill in {string} form with {string}') do |field_name, year|
+  # fill_in field_name, with: year
+# end
 
 Then("I should see {string} under the text input") do |text|
   expect(page).to have_content(text)
@@ -49,4 +65,12 @@ end
 
 Then("I click {string} to confirm deleting") do |button|
   page.accept_alert
+end
+
+Then("I should see TEST") do
+  expect(page).to have_content('TEST')
+end
+
+Then("TEST disappear") do
+  expect(page).not_to have_content('TEST')
 end

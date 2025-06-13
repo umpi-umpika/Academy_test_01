@@ -41,28 +41,3 @@ if ENV['DEBUG'] == 'true'
   Selenium::WebDriver.logger.level = :error
   puts ":mag: Debug mode enabled - using visible Chrome (logging only errors)"
 end
-
-Before do
-  Capybara.page.driver.browser.manage.window.resize_to(1200, 720)
-  DatabaseCleaner.start
-end
-
-After do
-  DatabaseCleaner.clean
-  begin
-    require 'net/http'
-    uri = URI('http://localhost:3000/test_helper/clean_database')
-    Net::HTTP.post(uri, '', { 'Content-Type' => 'application/json' })
-  rescue => e
-    puts ":warning:  Could not clean database: #{e.message}"
-  end
-end
-
-Before do
-  page.execute_script("
-    var link = document.createElement('link');
-    link.rel = 'icon';
-    link.href = 'data:,';
-    document.head.appendChild(link);
-  ") rescue nil
-end

@@ -19,15 +19,23 @@ Feature: Quest Page
 
   Scenario: Adding Quest
     Given I am on the quests page
-    And I should see the "+ Add Quest" button and text input
-    When I click button "+ Add Quest"
-    # Then I should see the new quest under the text input
+    And I should see the "+ Add Quest" button
+    And Type "TEST" into the fill
+    When I click button call "+ Add Quest"
+    Then I should see TEST
 
 
-  # Scenario: Deleting quests
-  #   Given I am on the quests page
-    # And I should see a list of available quests
-    # When I click delete icon
-    # And I click "OK" to confirm deleting
-    # Then a list of available disappear
+  Scenario: Deleting quests
+    Given I am on the quests page
+    And I should see a list of available quests
+    When I click delete icon
+    And I click "OK" to confirm deleting
+    Then TEST disappear
+
+
+
+
+
+
+
 
