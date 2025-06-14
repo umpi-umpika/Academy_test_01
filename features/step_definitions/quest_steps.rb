@@ -39,17 +39,10 @@ Given('I should see the {string} button') do |string|
   expect(page).to have_button(string)
 end
 
-# And('Type {string} into the fill') do |string|
-#   fill_in quest_input, with: TEST
-# end
 
 And('Type {string} into the fill') do |text|
   find('input[data-testid="Add Quest"]').fill_in(with: text)
 end
-
-# When('I fill in {string} form with {string}') do |field_name, year|
-  # fill_in field_name, with: year
-# end
 
 Then("I should see {string} under the text input") do |text|
   expect(page).to have_content(text)
